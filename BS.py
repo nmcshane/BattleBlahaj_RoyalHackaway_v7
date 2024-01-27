@@ -1,4 +1,3 @@
-rows, rows = (5, 5)
 grid = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 for i in range(10):
     print(grid[i])
@@ -17,57 +16,87 @@ desharker_Pos = [0, 0]
 
 ships = ["blaharier", "battleblahaj", "bluiser", "sharkmarine", "desharker"]
 n = 0
+valid_Num = False
 for i in ships:
-    print("Enter row number for start of " + i + ": ")
-    x_Row = int(input())
-    print("Enter column number for start of " + i + ": ")
-    x_Col = int(input())
-    print("Horizontal or vertical? (H or V)")
-    x_Orientation = input()
+    while valid_Num == False:
+        if n == 0:
+            ship_Size = 5
+        elif n == 1:
+            ship_Size = 4
+        elif (n == 2) or (n == 3):
+            ship_Size = 3
+        elif n == 4:
+            ship_Size = 3
+        print("Enter row number (0-9) for the start of " + i + " (" + ship_Size + W " ): shj============")
+        x_Row = int(input())
+        print("Enter column number (0-9) for the start of " + i + ": ")
+        x_Col = int(input())
+        print("Horizontal or vertical? (H or V)")
+        x_Orientation = input()
+
     if n == 0:
-        blaharier_Pos = [[x_Row], [x_Col]]
+        grid[x_Row][x_Col] = 1
+        blaharier_Pos = [x_Row, x_Col]
         if x_Orientation == "H":
-            for i in range(blaharier_Num):
-                x
-                grid[[x_Row], [x_Col+i]] = 1;
+            for i in range(blaharier_Num - 1):
+                x_Col = x_Col + 1
+                grid[x_Row][x_Col] = 1
         elif x_Orientation == "V":
-            for i in range(blaharier_Num):
-                grid[[x_Row+1], [x_Col]] = 1;
-        print(blaharier_Pos)
+            for i in range(blaharier_Num - 1):
+                x_Row = x_Row + 1
+                grid[x_Row][x_Col] = 1
+        for i in range(10):
+            print(grid[i])
     elif n == 1:
-        battleblahaj_Pos = [[x_Row], [x_Col]]
+        battleblahaj_Pos = [x_Row, x_Col]
+        grid[x_Row][x_Col] = 2
         if x_Orientation == "H":
             for i in range(battleblahaj_Num):
-                grid[[x_Row], [x_Col+i]] = 2;
+                x_Col = x_Col + 1
+                grid[x_Row][x_Col] = 2
         elif x_Orientation == "V":
             for i in range(battleblahaj_Num):
-                grid[[x_Row+1], [x_Col]] = 2;
-        print(battleblahaj_Pos)
+                x_Row = x_Row + 1
+                grid[x_Row][x_Col] = 2
+        for i in range(10):
+            print(grid[i])
     elif n == 2:
-        bluiser_Pos = [[x_Row], [x_Col]]
+        bluiser_Pos = [x_Row, x_Col]
+        grid[x_Row][x_Col] = 3
         if x_Orientation == "H":
             for i in range(bluiser_Num):
-                grid[[x_Row], [x_Col+i]] = 3;
+                x_Col = x_Col + 1
+                grid[x_Row][x_Col] = 3
         elif x_Orientation == "V":
             for i in range(blaharier_Num):
-                grid[[x_Row+1], [x_Col]] = 3;
-        print(bluiser_Pos)
+                x_Row = x_Row + 1
+                grid[x_Row][x_Col] = 3
+        for i in range(10):
+            print(grid[i])
     elif n == 3:
-        sharkmarine_Pos = [[x_Row], [x_Col]]
+        sharkmarine_Pos = [x_Row, x_Col]
+        grid[x_Row][x_Col] = 4
         if x_Orientation == "H":
             for i in range(sharkmarine_Num):
-                grid[[x_Row], [x_Col+i]] = 4;
+                x_Col = x_Col + 1
+                grid[x_Row][x_Col] = 4
         elif x_Orientation == "V":
             for i in range(sharkmarine_Num):
-                grid[[x_Row+1], [x_Col]] = 4;
-        print(sharkmarine_Pos)
+                x_Row = x_Row + 1
+                grid[x_Row][x_Col] = 4
+        for i in range(10):
+            print(grid[i])
     elif n == 4:
-        desharker_Pos = [[x_Row], [x_Col]]
+        desharker_Pos = [x_Row, x_Col]
+        grid[x_Row][x_Col] = 5
         if x_Orientation == "H":
             for i in range(desharker_Num):
-                grid[[x_Row], [x_Col+i]] = 5;
+                x_Col = x_Col + 1
+                grid[x_Row][x_Col] = 5
         elif x_Orientation == "V":
             for i in range(desharker_Num):
-                grid[[x_Row+1], [x_Col]] = 5;
-        print(desharker_Pos)
+                x_Row = x_Row + 1
+                grid[x_Row][x_Col] = 5
+        for i in range(10):
+            print(grid[i])
     n = n + 1
