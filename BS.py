@@ -27,9 +27,9 @@ for i in ships:
             ship_Size = 3
         elif n == 4:
             ship_Size = 3
-        print("Enter row number (0-9) for the start of " + i + " (" + ship_Size + W " ): shj============")
+        print("Enter row number (0-9) for the start of " + i + " (" + str(ship_Size) + " spaces): ")
         x_Row = int(input())
-        print("Enter column number (0-9) for the start of " + i + ": ")
+        print("Enter column number (0-9) for the start of " + i + " (" + str(ship_Size) + " spaces): ")
         x_Col = int(input())
         print("Horizontal or vertical? (H or V)")
         x_Orientation = input()
