@@ -16,6 +16,8 @@ desharker_Pos = [0, 0]
 
 ships = ["blaharier", "battleblahaj", "bluiser", "sharkmarine", "desharker"]
 
+hasWon = False
+
 def chooseShipPos():
     n = 0
     for i in ships:
@@ -117,40 +119,46 @@ def hitOrMiss():
     sharkmarine_Sunk = False
     desharker_Sunk = False
     print("Enter row number (0-9) to attack: ")
-    hit_Row = input()
+    hit_Row = int(input())
     print("Enter column number (0-9) to attack: ")
-    hit_Col = input()
+    hit_Col = int(input())
+    hasHit = False
     for i in range(10):
         for j in range(10):
-            if grid[hit_Row][hit_Col] == 1:
+            if (grid[hit_Row][hit_Col] == 1) and (hasHit == False):
+                hasHit = True
                 print("HIT")
                 blaharier_Left -= 1
                 if blaharier_Left <= 0:
                     print("BLAHARIER SUNK")
                     blaharier_Sunk = True
                 grid[hit_Row][hit_Col] = 9
-            if grid[hit_Row][hit_Col] == 2:
+            if (grid[hit_Row][hit_Col] == 2) and (hasHit == False):
+                hasHit = True
                 print("HIT")
                 battleblahaj_Left -= 1
                 if battleblahaj_Left <= 0:
                     print("BATTLEBLAHAJ SUNK")
                     battleblahaj_Sunk = True
                 grid[hit_Row][hit_Col] = 9
-            if grid[hit_Row][hit_Col] == 3:
+            if (grid[hit_Row][hit_Col] == 3) and (hasHit == False):
+                hasHit = True
                 print("HIT")
                 bluiser_Left -= 1
                 if bluiser_Left <= 0:
                     print("BLUSIER SUNK")
                     bluiser_Sunk = True
                 grid[hit_Row][hit_Col] = 9
-            if grid[hit_Row][hit_Col] == 4:
+            if (grid[hit_Row][hit_Col] == 4) and (hasHit == False):
+                hasHit = True
                 print("HIT")
                 sharkmarine_Left -= 1
                 if sharkmarine_Left <= 0:
                     print("SHARKMARINE SUNK")
                     sharkmarine_Sunk = True
                 grid[hit_Row][hit_Col] = 9
-            if grid[hit_Row][hit_Col] == 5:
+            if (grid[hit_Row][hit_Col] == 5) and (hasHit == False):
+                hasHit = True
                 print("HIT")
                 desharker_Left -= 1
                 if desharker_Left <= 0:
@@ -159,9 +167,15 @@ def hitOrMiss():
                 grid[hit_Row][hit_Col] = 9            
             else:
                 print("MISS")
+    win(blaharier_Sunk, battleblahaj_Sunk, bluiser_Sunk, sharkmarine_Sunk, desharker_Sunk)    
 
-def win():
-    
+def win(blaharier_Sunk, battleblahaj_Sunk, bluiser_Sunk, sharkmarine_Sunk, desharker_Sunk):
+    if (blaharier_Sunk == True) and (battleblahaj_Sunk == True) and (bluiser_Sunk == True) and (sharkmarine_Sunk == True) and (desharker_Sunk == True):
+        hasWon = True
+        print("You win!")
+        print("All ships are sunk!")
 
 
 chooseShipPos()
+while (not hasWon):
+    hitOrMiss()
